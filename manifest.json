@@ -1,0 +1,37 @@
+{
+  "manifest_version": 3,
+  "name": "Copy Merged PRs Details",
+  "description": "Seamlessly track and manage your GitHub workflow with PR Merge Memoir. Capture and organize your merged pull requests for better collaboration.",
+  "version": "1.0",
+  "action": {
+    "default_popup": "popup/main.html",
+    "default_icon": "images/cat.png" // https://www.flaticon.com/free-icons/github
+  },
+  "permissions": [
+    "tabs",
+    "activeTab",
+    "notifications",
+    "clipboardWrite",
+    "storage",
+    "scripting"
+  ],
+  "commands": {
+    "_execute_action": {
+      "suggested_key": {
+        "default": "Ctrl+B",
+        "mac": "Command+B"
+      }
+    }
+  },
+  "content_scripts": [
+    {
+      "js": ["scripts/content.js"],
+      "matches": [
+        "https://github.com/*"
+      ]
+    }
+  ],
+  "background": {
+    "service_worker": "scripts/background.js"
+  }
+}
