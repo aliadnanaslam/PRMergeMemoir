@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "PR Merge Memoir",
-  "description": "Seamlessly track and manage your GitHub workflow with PR Merge Memoir. Capture and organize your merged pull requests for better collaboration.",
+  "description": "Effortlessly capture and organize your merged pull requests for seamless collaboration.",
   "version": "1.0",
   "action": {
     "default_popup": "popup/main.html",
