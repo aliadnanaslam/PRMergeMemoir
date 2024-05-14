@@ -1,24 +1,21 @@
-(function(){
-  'use strict';
-
-  if (document.readyState === 'complete') {
+chrome.runtime.onMessage.addListener(function(request) {
+  if (request && request.type === 'newRenderingDetected') {
+    console.log(' [+] New Rendering Detected!');
     injectScriptInTab();
-  } else {
-    window.addEventListener('load', injectScriptInTab);
   }
+});
 
-  function injectScriptInTab() {
-    console.log(' [+] Injecting script in the tab!');
+function injectScriptInTab() {
+  console.log(' [+] Injecting script in the tab!');
 
-    if (document.getElementsByClassName('js-merge-commit-button')[0] !== undefined) {
-      document.getElementsByClassName('js-merge-commit-button')[0].addEventListener('click', function(event) {
-        console.log(' [+] Event Listener Hit!');
-        let prDetails = `${window.location.href} (${document.getElementsByClassName('js-issue-title markdown-title')[0].innerText})`
-        saveDataToStorage(new Date().getTime(), prDetails); // details will be stored against timestamp;
-      });
-    }
+  if (document.getElementsByClassName('merge-box-button btn-group-merge')[0] !== undefined) {
+    document.getElementsByClassName('merge-box-button btn-group-merge')[0].addEventListener('click', function(event) {
+      console.log(' [+] Event Listener Hit!');
+      let prDetails = `${window.location.href} (${document.getElementsByClassName('js-issue-title markdown-title')[0].innerText})`
+      saveDataToStorage(new Date().getTime(), prDetails); // details will be stored against timestamp;
+    });
   }
-})();
+}
 
 // Save data to synchronized storage
 function saveDataToStorage(key, value) {
