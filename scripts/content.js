@@ -1,6 +1,5 @@
 chrome.runtime.onMessage.addListener(function(request) {
   if (request && request.type === 'newRenderingDetected') {
-    console.log(' [+] New Rendering Detected!');
     injectScriptInTab();
   }
 });
