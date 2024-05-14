@@ -10,7 +10,7 @@ function injectScriptInTab() {
   if (document.getElementsByClassName('merge-box-button btn-group-merge')[0] !== undefined) {
     document.getElementsByClassName('merge-box-button btn-group-merge')[0].addEventListener('click', function(event) {
       console.log(' [+] Event Listener Hit!');
-      let prDetails = `${window.location.href} (${document.getElementsByClassName('js-issue-title markdown-title')[0].innerText})`
+      let prDetails = `${window.location.href} (${document.getElementsByClassName('js-issue-title markdown-title')[0].innerText})`;
       saveDataToStorage(new Date().getTime(), prDetails); // details will be stored against timestamp;
     });
   }

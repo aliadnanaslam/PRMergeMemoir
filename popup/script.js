@@ -8,7 +8,7 @@ function copyList() {
   var itemList = document.getElementById('itemList');
   itemList.innerHTML = '';
   retrieveDataFromStorage("allData", function(allData) {
-    if (Object.keys(allData).length < 2) {
+    if (Object.keys(allData).length < 1) {
       alert('Nothing to copy boss >_<');
       return;
     }
@@ -26,6 +26,8 @@ function clearList() {
   var itemList = document.getElementById('itemList');
   itemList.innerHTML = '';
   clearStorage();
+  var itemList = document.getElementById('itemList');
+  itemList.innerHTML = '<li style="color: red;">List Cleared From Cache!!</li>';
 }
 
 // Save data to synchronized storage
